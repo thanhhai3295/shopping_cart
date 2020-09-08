@@ -1,0 +1,23 @@
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} -s [OR]
+RewriteCond %{REQUEST_FILENAME} -l [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^.*$ - [NC,L]
+
+RewriteRule		index.html 		  	index.php?module=default&controller=index&action=index
+RewriteRule		^category.html$ 		index.php?module=default&controller=category&action=list
+RewriteRule		register.html 		index.php?module=default&controller=index&action=register
+RewriteRule		^login.html$ 		  	index.php?module=default&controller=index&action=login
+RewriteRule		cart.html 			  index.php?module=default&controller=user&action=cart
+RewriteRule		my-account.html 	index.php?module=default&controller=user&action=index
+RewriteRule		history.html 		  index.php?module=default&controller=user&action=history
+
+RewriteRule 	(^[A-Za-z]+)/category.html	    index.php?module=default&controller=category&action=list&filter=$1
+RewriteRule 	category/page-([0-9]+)	    index.php?module=default&controller=category&action=list&filter_page=$1
+RewriteRule 	(^[A-Za-z0-9_-]+)-([0-9]+)/page-([0-9]+) 		index.php?module=default&controller=book&action=list&catID=$2&filter_page=$3
+RewriteRule 	(^[A-Za-z0-9_-]+)-([0-9]+)\.html 		index.php?module=default&controller=book&action=list&catID=$2
+RewriteRule		(^[a-z]{1,10})/([A-Za-z0-9_-]+)-([0-9]+)\.html 		index.php?module=default&controller=book&action=list&catID=$3&filter=$1
+
+RewriteRule		([A-Za-z0-9_-]+)/([A-Za-z0-9_-]+)-([0-9]+)-([0-9]+)\.html 		index.php?module=default&controller=book&action=detail&catID=$3&bookID=$4
+
+RewriteRule ^search=(.+)$ index.php?module=default&controller=book&action=search&filter-search=$1 
