@@ -1,18 +1,17 @@
 <?php 
-  $columnPost		= $this->arrParam['filter_column'] ?? '';
+	$columnPost		= $this->arrParam['filter_column'] ?? '';
 	$orderPost		= $this->arrParam['filter_column_dir'] ?? '';
-  $lblID      	= Helper::cmsLinkSort('ID', 'id', $columnPost, $orderPost);
-  $lblName    	= Helper::cmsLinkSort('Name', 'name', $columnPost, $orderPost);
-  $lblCreated 	= Helper::cmsLinkSort('Created', 'created', $columnPost, $orderPost);
-  $lblOrdering 	= Helper::cmsLinkSort('Ordering', 'ordering', $columnPost, $orderPost);
-  $lblStatus  	= Helper::cmsLinkSort('Status', 'status', $columnPost, $orderPost);
-  $message      = Helper::createMessage();
-  $filter       = Helper::createFilter($this->arrParam,$this->countStatus);
-  $pagination   = $this->pagination->showPagination(true);
-  $hiddenColumn    = Helper::cmsInput('hidden','filter_column','id');
-  $hiddenColumnDir = Helper::cmsInput('hidden','filter_column_dir',$this->arrParam['filter_column_dir']??'');
-  $hiddenPage      = Helper::cmsInput('hidden','filter_page','1');
-
+	$lblID      	= Helper::cmsLinkSort('ID', 'id', $columnPost, $orderPost);
+	$lblName    	= Helper::cmsLinkSort('Name', 'name', $columnPost, $orderPost);
+	$lblCreated 	= Helper::cmsLinkSort('Created', 'created', $columnPost, $orderPost);
+	$lblOrdering 	= Helper::cmsLinkSort('Ordering', 'ordering', $columnPost, $orderPost);
+	$lblStatus  	= Helper::cmsLinkSort('Status', 'status', $columnPost, $orderPost);
+	$message      = Helper::createMessage();
+	$filter       = Helper::createFilter($this->arrParam,$this->countStatus);
+	$pagination   = $this->pagination->showPagination(true);
+	$hiddenColumn    = Helper::cmsInput('hidden','filter_column','id');
+	$hiddenColumnDir = Helper::cmsInput('hidden','filter_column_dir',$this->arrParam['filter_column_dir']??'');
+	$hiddenPage      = Helper::cmsInput('hidden','filter_page','1');
 ?>
 
 <div class="container-fluid">
@@ -20,7 +19,7 @@
       <div class="row">
           <div class="col-lg-6">
               <div class="page-header-left">
-                  <h3>Category
+                  <h3>GROUP
                       <small>Multikart Admin panel</small>
                   </h3>
               </div>
@@ -28,8 +27,8 @@
           <div class="col-lg-6">
               <ol class="breadcrumb pull-right">
                   <li class="breadcrumb-item"><a href="index.html"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg></a></li>
-                  <li class="breadcrumb-item">Physical</li>
-                  <li class="breadcrumb-item active">Category</li>
+                  <li class="breadcrumb-item">Home</li>
+                  <li class="breadcrumb-item active">Group</li>
               </ol>
           </div>
       </div>
@@ -42,11 +41,11 @@
       <div class="col-sm-12">
           <div class="card">
               <div class="card-header">
-                  <h5>Products Category</h5>
+                  <h5>Group List</h5>
               </div>
               <div class="card-body">
                   <div class="btn-popup pull-right">
-                      <button type="button" class="btn btn-primary" data-toggle="modal" data-original-title="test" data-target="#exampleModal">Add Category</button>
+                      <button type="button" class="btn btn-primary" data-toggle="modal" data-original-title="test" data-target="#exampleModal">Add Group</button>
                       <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                           <div class="modal-dialog" role="document">
                               <div class="modal-content">
@@ -83,9 +82,10 @@
                           <tr class="jsgrid-header-row">
                               <th class="jsgrid-header-cell jsgrid-align-center jsgrid-header-sortable" style="width: 50px;">Image</th>
                               <th class="jsgrid-header-cell jsgrid-header-sortable" style="width: 100px;">Name</th>
-                              <th class="jsgrid-header-cell jsgrid-align-right jsgrid-header-sortable" style="width: 50px;">Price</th>
+															<th class="jsgrid-header-cell jsgrid-header-sortable" style="width: 50px;">Ordering</th>
                               <th class="jsgrid-header-cell jsgrid-header-sortable" style="width: 50px;">Status</th>
-                              <th class="jsgrid-header-cell jsgrid-header-sortable" style="width: 50px;">Category</th>
+                              <th class="jsgrid-header-cell jsgrid-header-sortable" style="width: 50px;">Created</th>
+															<th class="jsgrid-header-cell jsgrid-header-sortable" style="width: 50px;">Modified</th>
                               <th class="jsgrid-header-cell jsgrid-control-field jsgrid-align-center" style="width: 50px;"><input class="jsgrid-button jsgrid-mode-button jsgrid-insert-mode-button" type="button" title="Switch to inserting"></th>
                           </tr>
                           <tr class="jsgrid-filter-row" style="display: table-row;">
@@ -109,16 +109,24 @@
                     <div class="jsgrid-grid-body">
                         <table class="jsgrid-table">
                           <tbody>
-                              <tr class="jsgrid-row">
-                                <td class="jsgrid-cell jsgrid-align-center" style="width: 50px;"><img src="public/template/admin/multicart/images/dashboard/product/1.jpg" class="blur-up lazyloaded" style="height: 50px; width: 50px;"></td>
-                                <td class="jsgrid-cell" style="width: 100px;">Headphones</td>
-                                <td class="jsgrid-cell jsgrid-align-right" style="width: 50px;">$20.00</td>
-                                <td class="jsgrid-cell" style="width: 50px;"><i class="fa fa-circle font-success f-12"></i></td>
-                                <td class="jsgrid-cell" style="width: 50px;">Electronics</td>
-                                <td class="jsgrid-cell jsgrid-control-field jsgrid-align-center" style="width: 50px;"><input class="jsgrid-button jsgrid-edit-button" type="button" title="Edit"><input class="jsgrid-button jsgrid-delete-button" type="button" title="Delete"></td>
-                              </tr>
-                              
-                             
+															<?php 
+																$xhtml = '';
+																foreach ($this->items as $key => $value) {
+																	$checked = ($value['status'] == 'active') ? 'checked' : '';
+																	$id = $value['id'];
+																	$status = $value['status'];
+																	$linkStatus = URL::createLink('admin','group','status',['id' => $id,'st' => $status]);
+																	$xhtml .= '<tr class="jsgrid-row">
+																						<td class="jsgrid-cell jsgrid-align-center" style="width: 50px;"><img src="public/template/admin/multicart/images/dashboard/product/1.jpg" class="blur-up lazyloaded" style="height: 50px; width: 50px;"></td>
+																						<td class="jsgrid-cell" style="width: 100px;">'.$value['name'].'</td>			<td class="jsgrid-cell" style="width: 50px;">'.$value['ordering'].'</td>			
+																						<td class="jsgrid-cell" style="width: 50px;" onClick="changeStatus(event,\''.$linkStatus.'\');"><input type="checkbox" data-toggle="switchbutton" '.$checked.' data-onlabel="Active&nbsp;&nbsp;" data-offlabel="&nbsp;&nbsp;Inactive" data-onstyle="primary" data-offstyle="danger"></td>
+																						<td class="jsgrid-cell" style="width: 50px;">'.$value['created'].'</td>
+																						<td class="jsgrid-cell" style="width: 50px;">'.$value['modified'].'</td>
+																						<td class="jsgrid-cell jsgrid-control-field jsgrid-align-center" style="width: 50px;"><input class="jsgrid-button jsgrid-edit-button" type="button" title="Edit"><input class="jsgrid-button jsgrid-delete-button" type="button" title="Delete"></td>
+																					</tr>';
+																}
+																echo $xhtml;
+															?>
                           </tbody>
                         </table>
                     </div>

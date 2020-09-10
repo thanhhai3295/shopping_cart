@@ -22,14 +22,12 @@
 	define	('DEFAULT_MODULE'		, 'default');
 	define	('DEFAULT_CONTROLLER'	, 'index');
 	define	('DEFAULT_ACTION'		, 'index');
-
 	// ====================== DATABASE ===========================
 	define ('DB_HOST'			, 'localhost');
 	define ('DB_USER'			, 'root');						
 	define ('DB_PASS'			, '');						
-	define ('DB_NAME'			, 'bookstore');						
+	define ('DB_NAME'			, 'shopping_cart');						
 	define ('DB_TABLE'			, 'group');			
-
 	// ====================== DATABASE TABLE===========================
 	define ('TBL_GROUP'			, 'group');
 	define ('TBL_USER'			, 'user');
@@ -37,7 +35,7 @@
 	define ('TBL_CATEGORY'		, 'category');
 	define ('TBL_BOOK'			, 'book');
 	define ('TBL_CART'			, 'cart');
-	
+
 	// ====================== CONFIG ===========================
 	define ('TIME_LOGIN'		, 3600);
 ?>

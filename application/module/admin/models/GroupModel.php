@@ -7,7 +7,6 @@ class GroupModel extends Model{
 	public function listItems($params) {
 		$totalItemsPerPage = $params['pagination']['totalItemsPerPage'];
 		$currentPage 			 = $params['pagination']['currentPage'];
-	
 		$this->pageLimit   = $totalItemsPerPage;
 		if(!empty($params['filter_search'])) {
 			$search = $params['filter_search'];
@@ -26,7 +25,8 @@ class GroupModel extends Model{
 			$this->orderBy("id","desc");
 		}  
 		$result = $this->arraybuilder()->paginate("`$this->table`", $currentPage);
-
+		$query = "SELECT * FROM `group`";
+		$result = $this->rawQuery($query);
 		return $result;
 	}
 

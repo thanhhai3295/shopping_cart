@@ -1,3 +1,8 @@
+function changeStatus(event,url) {
+  if(event.target.nodeName == 'LABEL') {
+    $.get(url);
+  }
+}
 $(document).ready(function() {
   var url    = window.location.href;
   var matchesAction = url.match(/action=([^&]*)/);

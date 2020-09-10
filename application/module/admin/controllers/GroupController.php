@@ -10,7 +10,6 @@ class GroupController extends AdminController{
 		$this->_view->items			  = $this->_model->listItems($this->_arrParam);
 		$this->_view->countStatus = $this->_model->countStatus($this->_arrParam);
 		$this->_view->render($this->nameController.'/list');
-
 	}
 	public function formAction(){
 		$this->_view->_title	 = strtoupper($this->nameController).' / ADD';
