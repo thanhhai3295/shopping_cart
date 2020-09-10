@@ -1,8 +1,11 @@
 function changeStatus(event,url) {
   if(event.target.nodeName == 'LABEL') {
-    $.get(url);
+    $.get(url,function(data) {
+      notify('Change Status Success'); 
+    });
   }
 }
+
 $(document).ready(function() {
   var url    = window.location.href;
   var matchesAction = url.match(/action=([^&]*)/);
