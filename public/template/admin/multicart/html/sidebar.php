@@ -1,19 +1,24 @@
-<?php 
-    $menu = [
-        ['name' => 'Dashboard', 'icon' => '<i data-feather="home"></i>','link' => '#'],
-        ['name' => 'Products', 'icon' => '<i data-feather="box"></i>', 'link' => '#',
-            'child' => [
-                ['name' => 'Product List','icon' => '<i class="fa fa-circle"></i>','link' => '#'],
-                ['name' => 'Product Add','icon' => '<i class="fa fa-circle"></i>','link' => '#'],
-            ]
-        ],
-        ['name' => 'Group', 'icon' => '<i data-feather="clipboard"></i>', 'link' => '#',
-            'child' => [
-                ['name' => 'Product List','icon' => '<i class="fa fa-circle"></i>','link' => '#'],
-                ['name' => 'Product Add','icon' => '<i class="fa fa-circle"></i>','link' => '#'],
-            ]
-        ],
-    ];
+<?php                     
+	$linkDashBoard       = URL::createLink('admin','index','dashboard');
+	$linkGroupList 		 = URL::createLink('admin','group','list');
+    $linkGroupForm 		 = URL::createLink('admin','group','form');
+    $action              = $this->arrParam['action']; 
+    $controller          = $this->arrParam['controller'];
+	$menu = [
+			['name' => 'Dashboard', 'icon' => '<i data-feather="home"></i>','link' => $linkDashBoard],
+			['name' => 'Products', 'icon' => '<i data-feather="box"></i>', 'link' => '#',
+					'child' => [
+							['name' => 'Product List','icon' => '<i class="fa fa-circle"></i>','link' => '#'],
+							['name' => 'Add Product','icon' => '<i class="fa fa-circle"></i>','link' => '#'],
+					]
+			],
+			['name' => 'Group', 'icon' => '<i data-feather="clipboard"></i>', 'link' => '#',
+					'child' => [
+							['name' => 'Group List','icon' => '<i class="fa fa-circle"></i>','link' => $linkGroupList],
+							['name' => 'Add Group','icon' => '<i class="fa fa-circle"></i>','link' => $linkGroupForm],
+					]
+			],
+	];
 ?>
 <!-- Page Sidebar Start-->
 <div class="page-sidebar">
