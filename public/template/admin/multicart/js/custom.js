@@ -5,7 +5,24 @@ function changeStatus(event,url) {
     });
   }
 }
-
+function process(field,url) {
+  var arr = {};
+  $.each( field, function( key, value ) {
+    arr[value] = ($("#mainForm div.form-group #"+value).val());
+    $("#mainForm div.form-group #"+value).next().html('');
+  });
+  $.post(url,{'form':JSON.stringify(arr)}).done(function(data) {
+    if(data == true) {
+      location.reload();
+    } else {
+      var result = JSON.parse(data);
+      $.each( result, function( key, value ) {
+        $("#mainForm div.form-group #"+key).next().html(value);
+      });
+    }
+    
+  });
+}
 $(document).ready(function() {
   var url    = window.location.href;
   var matchesAction = url.match(/action=([^&]*)/);

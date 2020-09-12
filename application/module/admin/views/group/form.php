@@ -1,43 +1,45 @@
-<?php 
-  $nameTable = str_replace('/','',$this->_title);
-  $action = explode('/',$this->_title);
-  $action = trim($action[1]);
-  $form = $this->arrParam??'';
-  $arrayForm = [
-    [
-      'label' => Helper::createLabel('name'),
-      'input' => Helper::createInput('text','form[name]',$form['name']??'','Name',$this->errors['name']??'')
-    ],
-    [
-      'label' => Helper::createLabel('ordering'),
-      'input' => Helper::createInput('text','form[ordering]',$form['ordering']??'','Ordering',$this->errors['ordering']??'')
-    ],
-    [
-      'label' => Helper::createLabel('status'),
-      'select' => Helper::cmsSelectbox('form[status]','form-control',DEFAULT_STATUS,$form['status']??'',null,$this->errors['status']??'')
-    ]
-  ];
-
-  echo Helper::createTitle($this->_title); 
-?>
-    <!-- Main content -->
-<section class="content">
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-md-8">
-        <div class="card card-info">
-        <div class="card-header indigo">
-          <h3 class="card-title"><?php echo $nameTable ?></h3>
+<form action="" method="POST" id="mainForm">
+<div class="modal fade" id="form" tabindex="-1" role="dialog" aria-labelledby="filterLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title f-w-600" id="filterLabel">Form</h5>
+        <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      </div>
+      <div class="modal-body">				
+        <div class="form needs-validation">
+          <div class="form-group">
+              <label for="validationCustom01" class="mb-1">Name :</label>
+              <input class="form-control" type="text" name="name" id="name">
+              <p class="text-danger"></p>
+          </div>
+          <div class="form-group">
+              <label for="validationCustom01" class="mb-1">Ordering Name :</label>
+              <input class="form-control" type="number" name="ordering" id="ordering">
+              <p class="text-danger"></p>
+          </div>			
+          <div class="form-group">
+              <label for="validationCustom01" class="mb-1">Status</label>
+              <select class="custom-select" name="status" id="status">
+                <option value="default">-- Choose Status --</option>
+                <option value="active">Active</option>
+                <option value="inactive">Inactive</option>
+              </select>
+              <p class="text-danger"></p>
+          </div>																
         </div>
-        <!-- /.card-header -->
-        <!-- form start -->
-        <form class="form-horizontal" method="POST" action="" id="adminForm">
-          <?php echo Helper::createForm($arrayForm,$action); ?>
-        </form>
-
-        </div>
-
-      </div>  <!-- col-md-6 -->
-    </div> <!-- row -->
-  </div><!-- /.container-fluid -->
-</section>
+      </div>
+      <div class="modal-footer">
+      <?php 
+        $data = ['name','ordering','status'];
+        $data = json_encode($data); 
+        $url = URL::createLink('admin','group','form');
+        $funct = "onclick=process($data,'$url')";
+      ?>
+        <button class="btn btn-primary" type="button" <?php echo $funct ?> >Add</button>
+        <button class="btn btn-secondary" data-dismiss="modal" aria-label="Close" type="button">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+</form>

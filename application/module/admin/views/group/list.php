@@ -38,12 +38,13 @@
 				</div>
 				<div class="card-body">
 					<div class="btn-popup pull-right">
-							<button type="button" class="btn btn-primary" data-toggle="modal" data-original-title="test" data-target="#filter">Filter</button>
+							<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#filter">Filter</button>
 							<?php include 'elements/filter.php' ?>
 					</div>
 					<div class="table-responsive">
 					<div id="basicScenario" class="product-physical jsgrid" style="position: relative; height: auto; width: 100%;">
 						<?php include 'elements/tableHeader.php' ?>
+						<?php include 'form.php' ?>
 						<div class="jsgrid-grid-body">
 								<table class="jsgrid-table">
 									<tbody class="data">

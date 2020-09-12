@@ -34,10 +34,10 @@ class GroupModel extends Model{
 	}
 
 	public function saveItem($params) {
-		$data = Array ( "name" 		 => $params['form']['name'],
+		$data = Array ( "name" 		 => $params['name'],
 										"created"	 => date_create('now')->format('Y-m-d'),
-										"status" 	 => $params['form']['status'],
-										"ordering" => (int)($params['form']['ordering'])										
+										"status" 	 => $params['status'],
+										"ordering" => (int)($params['ordering'])										
 									);
 
 			if(isset($params['id'])) {
