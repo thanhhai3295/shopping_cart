@@ -1,6 +1,6 @@
 <form action="" method="POST" id="mainForm">
 <div class="modal fade" id="form" tabindex="-1" role="dialog" aria-labelledby="filterLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title f-w-600" id="filterLabel">Form</h5>

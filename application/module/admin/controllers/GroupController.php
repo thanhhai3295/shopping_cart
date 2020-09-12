@@ -41,6 +41,7 @@ class GroupController extends AdminController{
 			echo str_replace("\\","",json_encode( $validate->getError(), JSON_UNESCAPED_UNICODE ));
 		} else {
 			$this->_model->saveItem($form);	
+			Session::set('success','Add Group Success');
 			echo true;
 		}
 	}

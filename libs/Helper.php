@@ -168,19 +168,17 @@ class Helper{
   }
   
   public static function createMessage(){
-		$str = ''; $type = ''; 
-      if (count($_SESSION) > 1) {
-        foreach ($_SESSION as $key => $value) {
-          if ($key == 'success' || $key == 'error') {
-            $str = $value;
-            $type = $key;
-            unset($_SESSION[$key]);
-            echo "<script>message('$str','$type');</script>";
-          }
-        }
-      } else {
-        return ;
-      }
+		$message = $_SESSION['success']??'';
+		unset($_SESSION['success']);
+		if(empty($message)) {
+			return;
+		} else {
+			echo '
+					<script src="public/template/admin/multicart/js/jquery-3.3.1.min.js"></script>
+					<script src="public/template/admin/multicart/js/toastr.min.js"></script>
+					<script src="public/template/admin/multicart/js/toastr.js"></script>
+					<script>notify(\''.$message.'\')</script>';
+		}
   }
 
   public static function createFilter($params, $count, $selectBox = null){

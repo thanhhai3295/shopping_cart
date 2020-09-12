@@ -6,12 +6,12 @@
 	$lblCreated 	= Helper::cmsLinkSort('Created', 'created', $columnPost, $orderPost);
 	$lblOrdering 	= Helper::cmsLinkSort('Ordering', 'ordering', $columnPost, $orderPost);
 	$lblStatus  	= Helper::cmsLinkSort('Status', 'status', $columnPost, $orderPost);
-	$message      = Helper::createMessage();
 	$filter       = Helper::createFilter($this->arrParam,$this->countStatus);
 	$pagination   = $this->pagination->showPagination(true);
 	$hiddenColumn    = Helper::cmsInput('hidden','filter_column','id');
 	$hiddenColumnDir = Helper::cmsInput('hidden','filter_column_dir',$this->arrParam['filter_column_dir']??'');
 	$hiddenPage      = Helper::cmsInput('hidden','filter_page','1');
+	Helper::createMessage();
 ?>
 
 <div class="container-fluid">

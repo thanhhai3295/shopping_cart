@@ -18,3 +18,4 @@ function notify(content) {
   }
     toastr.success(content); 
 }
+function test(){alert(true);}
