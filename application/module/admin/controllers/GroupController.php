@@ -34,5 +34,6 @@ class GroupController extends AdminController{
 		$this->_view->arrParam = $this->_arrParam['form']??'';
 		$this->_view->render($this->nameController.'/form');
 	}
-		
+	
+	
 } 

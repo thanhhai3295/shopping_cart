@@ -13,9 +13,9 @@ class GroupModel extends Model{
 			$this->where ("name", "%$search%", 'like');
 		}
 		
-		if(!empty($params['filter_status'])) {
-			$filter = $params['filter_status'];
-			$this->where ('status',$filter);
+		if(!empty($params['filter_status'])) {	
+				$filter = $params['filter_status'];
+				$this->where ('status',$filter);
 		} 
 		if(!empty($params['filter_column']) && !empty($params['filter_column_dir'])){
 			$column		= $params['filter_column'];
@@ -25,8 +25,6 @@ class GroupModel extends Model{
 			$this->orderBy("id","desc");
 		}  
 		$result = $this->arraybuilder()->paginate("`$this->table`", $currentPage);
-		$query = "SELECT * FROM `group`";
-		$result = $this->rawQuery($query);
 		return $result;
 	}
 

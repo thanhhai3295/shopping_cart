@@ -19,9 +19,6 @@
       $params['id'] = $this->_arrParam['id'];
       $params['status'] = ($this->_arrParam['st'] == 'active') ? 'inactive' : 'active';
       $this->_model->changeStatus($params);
-      // Session::set('success','Change Status Success!');
-      // $this->redirect('admin',$this->nameController,'list');
-      echo true;
     }
   
     public function deleteAction() {
