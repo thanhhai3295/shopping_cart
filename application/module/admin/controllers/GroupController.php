@@ -11,6 +11,7 @@ class GroupController extends AdminController{
 		$this->_view->countStatus = $this->_model->countStatus($this->_arrParam);
 		$this->_view->render($this->nameController.'/list');
 	}
+	
 	public function formAction(){
 	// 	$this->_view->_title	 = strtoupper($this->nameController).' / ADD';
 	// 	if(isset($this->_arrParam['id']) && !isset($this->_arrParam['form']['token'])){
@@ -34,15 +35,21 @@ class GroupController extends AdminController{
 	// 	$this->_view->arrParam = $this->_arrParam['form']??'';
 	// 	$this->_view->render($this->nameController.'/form');
 	// }
-		
-		$form = (json_decode($this->_arrParam['form'], true));
-		$validate = new GroupValidate($form);
-		if($validate->isValid() == false){
-			echo str_replace("\\","",json_encode( $validate->getError(), JSON_UNESCAPED_UNICODE ));
-		} else {
+
+		if(isset($this->_arrParam['id'])) {
+			$info = $this->_model->infoItem($this->_arrParam);
+			echo json_encode( $info, JSON_UNESCAPED_UNICODE );
+		}
+		if(isset($this->_arrParam['add'])) {
+			$form = (json_decode($this->_arrParam['form'], true));
+			$validate = new GroupValidate($form);
+			if($validate->isValid() == false){
+				echo str_replace("\\","",json_encode( $validate->getError(), JSON_UNESCAPED_UNICODE ));
+			} else {
 			$this->_model->saveItem($form);	
-			Session::set('success','Add Group Success');
+			Session::set('success', (isset($form['id']) ? 'Edit' : 'Add').' Group Success');
 			echo true;
+			}
 		}
 	}
 } 

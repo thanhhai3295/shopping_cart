@@ -31,12 +31,9 @@
       </div>
       <div class="modal-footer">
       <?php 
-        $data = ['name','ordering','status'];
-        $data = json_encode($data); 
-        $url = URL::createLink('admin','group','form');
         $funct = "onclick=process($data,'$url')";
       ?>
-        <button class="btn btn-primary" type="button" <?php echo $funct ?> >Add</button>
+        <button class="btn btn-primary" id="btnForm" type="button" <?php echo $funct ?> >Add</button>
         <button class="btn btn-secondary" data-dismiss="modal" aria-label="Close" type="button">Close</button>
       </div>
     </div>

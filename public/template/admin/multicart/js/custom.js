@@ -5,13 +5,29 @@ function changeStatus(event,url) {
     });
   }
 }
+function edit(field,url,id) {
+  $.get(url,function(data) {
+    var result = JSON.parse(data);
+    $.each( result, function( key, value ) {
+      $("#mainForm div.form-group #"+key).val(value);
+    });
+  });
+  $("input#id").val(id);
+  $("#btnForm").text('Edit');
+}
+function add(){
+  $("input#id").val('');
+  $("#btnForm").text('Add');
+}
 function process(field,url) {
   var arr = {};
+  var id = $("input#id").val();
   $.each( field, function( key, value ) {
     arr[value] = ($("#mainForm div.form-group #"+value).val());
     $("#mainForm div.form-group #"+value).next().html('');
   });
-  $.post(url,{'form':JSON.stringify(arr)}).done(function(data) {
+  if(id != '') arr['id'] = id;
+  $.post(url,{'form':JSON.stringify(arr),'add':true}).done(function(data) {
     if(data == true) {
       location.reload();
     } else {
@@ -20,7 +36,6 @@ function process(field,url) {
         $("#mainForm div.form-group #"+key).next().html(value);
       });
     }
-    
   });
 }
 $(document).ready(function() {
